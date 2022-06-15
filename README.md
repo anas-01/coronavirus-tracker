@@ -1,4 +1,4 @@
-# Coronavirus Tracker Application using Java with Spring Boot
+# COVID-19 Data Tracker Application
 
 In working progress
 

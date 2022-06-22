@@ -25,8 +25,12 @@ public class CoronaVirusService {
 
     private List<LocationStats> allStats = new ArrayList<>();
 
+    public List<LocationStats> getAllStats() {
+        return allStats;
+    }
+
     @PostConstruct
-    @Scheduled(cron = "*/3 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void fetchVirusData() throws IOException, InterruptedException {
         List<LocationStats> newStats = new ArrayList<>();
         HttpClient client = HttpClient.newHttpClient();
@@ -36,12 +40,12 @@ public class CoronaVirusService {
         HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
         StringReader csvBodyReader = new StringReader(httpResponse.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
+
         for (CSVRecord record : records) {
             LocationStats locationStat = new LocationStats();
             locationStat.setState(record.get("Province/State"));
             locationStat.setCountry(record.get("Country/Region"));
             locationStat.setLatestTotalCases(Integer.parseInt(record.get(record.size() - 1)));
-            System.out.println(locationStat);
             newStats.add(locationStat);
 
         }

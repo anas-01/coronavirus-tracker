@@ -5,12 +5,20 @@
 <head>
     <title>Coronavirus Tracker Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
 <body>
 
-<p th:text="${testName}"></p>
+<h1>Coronavirus Tracker Application</h1>
+<p>Covid-19 reported cases across the globe</p>
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold" th:text="${totalReportedCases}"></h1>
+        <p class="col-md-8 fs-4">Total reported cases today</p>
+    </div>
+</div>
 
 <table>
     <tr>

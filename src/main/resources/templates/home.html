@@ -10,29 +10,38 @@
 
 <body>
 
-<h1>Coronavirus Tracker Application</h1>
-<p>Covid-19 reported cases across the globe</p>
+<div class = "container">
 
-<div class="p-5 mb-4 bg-light rounded-3">
+<h1>Coronavirus Tracker Application</h1>
+<!--<p>Covid-19 reported cases across the globe</p>-->
+
+<!--<div class="p-5 mb-4 bg-light rounded-3">-->
+    <div class="bg-info p-2 text-dark bg-opacity-10">
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold" th:text="${totalReportedCases}"></h1>
-        <p class="col-md-8 fs-4">Total reported cases today</p>
+        <p class="col-md-8 fs-4">Total cases reported today</p>
     </div>
 </div>
 
-<table>
-    <tr>
-        <th>State</th>
-        <th>Country</th>
-        <th>Total cases</th>
-    </tr>
-    <tr th:each="locationStat : ${locationStats}">
-        <td th:text="${locationStat.state}"></td>
-        <td th:text="${locationStat.country}"></td>
-        <td th:text="${locationStat.latestTotalCases}">0</td>
-    </tr>
-</table>
+    <table class="table table-striped">
+        <tr>
+            <th>State</th>
+            <th>Country</th>
+            <th>Total cases</th>
+            <th>+ 24 hrs</th>
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.latestTotalCases}"></td>
+            <td th:text="${locationStat.diffFromPrevDay}">0</td>
+        </tr>
+    </table>
 
+</div>
+
+<p></p>
+<p>Source: Center for Systems Science and Engineering (CSSE) at Johns Hopkins University </p>
 
 </body>
 
